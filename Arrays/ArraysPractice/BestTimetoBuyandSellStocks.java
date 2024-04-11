@@ -1,7 +1,7 @@
 package Arrays.ArraysPractice;
 
 /*
- * You  are  given  an  array prices where prices[i] is  the  price  of  a  given  stock  on  the ith day.
+ * You  are  given  an  array prices where prices[i] is the price of a given stock on the ith day.
  * Return the maximum profit you can achieve from this transaction. 
  * If you cannot achieve any profit, return 0
  */
@@ -22,7 +22,8 @@ public class BestTimetoBuyandSellStocks {
                 maxprofit = Math.max(maxprofit, profit);
             } else {
                 // no profit 
-                // so buy the stock at a lowest buyprice based the current cost of the stock i.e prices[i] (todays stock price) to get profit 
+                // so buy the stock at a lowest buyprice based the current cost of the stock i.e prices[i] (todays stock price) 
+                // to get profit 
                 buyprice = prices[i];
             }
 
