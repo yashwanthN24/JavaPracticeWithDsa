@@ -48,3 +48,26 @@ public class MultiDimensionalArrayList {
 
     }
 }
+
+
+// jShell in java 
+
+/*
+ * 
+ * The jshell tool allows you to execute Java code, getting immediate results.
+|  You can enter a Java definition (variable, method, class, etc), like:  int x = 8
+|  or a Java expression, like:  x + x
+|  or a Java statement or import.
+|  These little chunks of Java code are called 'snippets'.
+|
+|  There are also the jshell tool commands that allow you to understand and
+|  control what you are doing, like:  /list
+|
+|  For a list of commands: /help
+
+    To exit type Ctrl + D or /exit or /ex 
+
+    To start jshell 
+    // type jshell in terminal 
+    
+ */
