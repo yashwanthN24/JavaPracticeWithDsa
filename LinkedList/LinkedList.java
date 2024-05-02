@@ -521,6 +521,47 @@ public class LinkedList {
     }
     
     
+    public void zigzagConversion() {
+
+        if (head == null) {
+            return;
+        }
+        // find mid 
+        Node midNode = getMid(head);
+        Node rightpart = midNode.next;
+        midNode.next = null;
+        // reverse 2nd half
+
+        Node prev = null;
+        Node cur = rightpart;
+        Node next;
+        
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        Node rightHead = prev;
+
+        Node lefthead = head;
+        // alternate merging 
+        Node nextLeft;
+        Node nextRight;
+        while (lefthead != null && rightHead != null) {
+            // these 4 lines constitute the zigzaging part
+            nextLeft = lefthead.next;
+            lefthead.next = rightHead;
+            nextRight = rightHead.next;
+            rightHead.next = nextLeft;
+
+            // updation part of pointers
+            rightHead = nextRight;
+            lefthead = nextLeft;
+        }
+
+
+    }
 
 
     public void print() {
@@ -624,6 +665,9 @@ public class LinkedList {
         ll4.addFirst(5);
         System.out.println(ll4);
         ll4.head = ll4.mergesort(ll4.head);
+        System.out.println(ll4);
+
+        ll4.zigzagConversion();
         System.out.println(ll4);
     }
 }
