@@ -56,17 +56,67 @@ public class HeightOfTree {
             return 0;
         }
 
-
         // get left subtree sum of nodes 
         int leftsum = SumOfNodes(root.left);
 
         // get right subtree sum of nodes 
         int rightsum = SumOfNodes(root.right);
 
-
         // final sumofNodes is leftsum + rightsum + currentrootNodeData
         return leftsum + rightsum + root.data;
 
+    }
+    
+
+    public static int DiameterOfTree(Node root) {
+        // Approach 1 
+
+        // Time complexity : O(n^2) as for each  node we find diameter as well as height 
+        // N nodes diameter finding  each O(n) for height calculation  so O(n^2)
+
+        // if tree empty no nodes so no diameter 
+        if (root == null) {
+            return 0;
+        }
+
+        // diameter not passing through root 
+        int leftDiameter = DiameterOfTree(root.left);
+        int leftheight = height(root.left);
+        int rightDiameter = DiameterOfTree(root.right);
+        int rightheight = height(root.right);
+
+        // for diamter passing through root 
+        int selfDiamter = leftheight + rightheight + 1;
+
+        // finally return the maximum diameter 
+
+        return Math.max(selfDiamter, Math.max(rightDiameter, leftDiameter));
+    }
+
+    static class Info {
+        int diam;
+        int ht;
+
+        Info(int diam, int ht) {
+            this.diam = diam;
+            this.ht = ht;
+        }
+
+    }
+
+    public static Info diameteroftree(Node root) {
+        // approach 2 - O(n)
+        if (root == null) {
+            return new Info(0, 0);
+        }
+
+        Info leftInfo = diameteroftree(root.left);
+        Info rightInfo = diameteroftree(root.right);
+
+        int diam = Math.max(Math.max(leftInfo.diam, rightInfo.diam), leftInfo.ht + rightInfo.ht + 1);
+        int ht = Math.max(leftInfo.ht, rightInfo.ht) + 1;
+
+        return new Info(diam, ht);
     }
 
     public static void main(String[] args) {
@@ -82,5 +132,9 @@ public class HeightOfTree {
         System.out.println(countNodesInTree(root));
 
         System.out.println(SumOfNodes(root));
+
+        System.out.println(DiameterOfTree(root));
+
+        System.out.println(diameteroftree(root).diam);
     }
 }
