@@ -57,7 +57,7 @@ public class LongestWordwithallPrefixes {
                 temp.deleteCharAt(temp.length() - 1);
             }
             
-            // for printing lexographically larger one just chnage the for loop to iterate from i = 25 to 0  then we would gey apply instead of apple 
+            // for printing lexographically larger one just chnage the for loop to iterate from i = 25 to 0  then we would get apply instead of apple 
             
         }
     }
