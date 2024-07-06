@@ -1,6 +1,6 @@
 package Divide_And_Conquer;
 
-public class SearchinrotatedSortedArray {
+public class SearchInRotatedSortedArray {
     public static int search(int arr[], int target, int si, int ei) {
         // base case 
         if(si > ei )
