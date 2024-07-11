@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+public class DFS {
 
-public class BFS {
+
     static class Edge {
         int src;
         int dest;
@@ -53,7 +54,7 @@ public class BFS {
 
     }
 
-    public static void bfs(ArrayList<Edge> graph[]) {
+    public static void bfs(ArrayList<Edge> graph[] , int startnode) {
         // Time complexity : O(V+E) if we use this adjancancy List approach for graphs V vertices E edges 
         // As we visit each vertex we traverse through each edge atleast once so TC is the sum of the total V vertices and E edges 
 
@@ -66,7 +67,7 @@ public class BFS {
 
         boolean visited[] = new boolean[graph.length];
 
-        queue.add(0);
+        queue.add(startnode);
 
         while (!queue.isEmpty()) {
             int curr = queue.remove();
@@ -96,6 +97,29 @@ public class BFS {
 
     };
 
+
+    public static void dfs(ArrayList<Edge> graph[], int curnode, boolean visited[]) {
+
+        // Time complexity : O(V+E)
+        // where V and E are total number of vertices and edges in graphs
+        
+
+        // visit the node 
+        System.out.print(curnode + " ");
+        visited[curnode] = true;
+
+        // get neighbours of curNode 
+        for (int i = 0; i < graph[curnode].size(); i++) {
+
+            int neighbour = graph[curnode].get(i).dest;
+            // if neighbour is not visited then we visit it else call for next neighbour 
+            if (!visited[neighbour]) {
+                dfs(graph, neighbour, visited);
+            }
+        }
+
+    }
+
     
 
     public static void main(String[] args) {
@@ -112,6 +136,18 @@ public class BFS {
 
         System.out.println(Arrays.toString(graph));
 
-        bfs(graph);
+
+        // The DFS sequence is 
+        System.out.println("The dfs sequence is :");
+        dfs(graph, 0, new boolean[V]);
+        
+
+        System.out.println();
+
+        // The bfs sequence is 
+        System.out.println("The bfs sequence is :");
+        bfs(graph, 0);
     }
 }
+
+

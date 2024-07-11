@@ -2,10 +2,8 @@ package Graphs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
-public class BFS {
+public class HasPathUsingDFS {
     static class Edge {
         int src;
         int dest;
@@ -52,54 +50,33 @@ public class BFS {
         graph[6].add(new Edge(6, 5, 1));
 
     }
+    
+    public static boolean hasPath(ArrayList<Edge> graph[], int src, int dest, boolean visited[]) {
+        // Time complexity : O(V+E) i.e total number of vertices and edges in graphs 
 
-    public static void bfs(ArrayList<Edge> graph[]) {
-        // Time complexity : O(V+E) if we use this adjancancy List approach for graphs V vertices E edges 
-        // As we visit each vertex we traverse through each edge atleast once so TC is the sum of the total V vertices and E edges 
-
-        
-        // if we use Adjancany Matrix we get Time complexity as O(V^2)
-        // So thats the reason why we dont prefer implementing graphs using Adjancany matrix 
-
-
-        Queue<Integer> queue = new LinkedList<>();
-
-        boolean visited[] = new boolean[graph.length];
-
-        queue.add(0);
-
-        while (!queue.isEmpty()) {
-            int curr = queue.remove();
-
-            if (!visited[curr]) {// if curr element not visited 
-
-                // visit the node 
-
-                // visiting the nodes is 3 step process 
-
-                // 1) Mark the node as visited 
-                visited[curr] = true;
-
-                // 2) print the node 
-                System.out.print(curr + " ");
-
-
-                // 3) get all neighbour of curr nodee and add it to queue
-                for (int i = 0; i < graph[curr].size(); i++) {
-                    Edge e = graph[curr].get(i);
-                    queue.add(e.dest);
-                }
-
-            }
-
+        // when src and destination are same 
+        if (src == dest) {
+            return true;
         }
 
-    };
+        // mark source as visited
+        visited[src] = true;
 
-    
+        // check if we can reach dest through src neighbours 
+        for (int i = 0; i < graph[src].size(); i++) {
+            int neighbour = graph[src].get(i).dest;
+            if (!visited[neighbour] && hasPath(graph, neighbour, dest, visited)) {
+                return true;
+            }
+        }
+
+        // if we cant reach dest in any way there is no path so return false 
+        return false; 
+    }
 
     public static void main(String[] args) {
-
+        
+        
         // Vertices of the graph = 7
 
         int V = 7;
@@ -112,6 +89,6 @@ public class BFS {
 
         System.out.println(Arrays.toString(graph));
 
-        bfs(graph);
+        System.out.println(hasPath(graph, 0, 5, new boolean[V]));
     }
 }
