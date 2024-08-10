@@ -1,5 +1,7 @@
 package Graphs.MinimumSpanningTree;
 
+import java.util.Arrays;
+
 // very efficient data structure 
 
 // Applications of this Data structure :
@@ -15,7 +17,7 @@ package Graphs.MinimumSpanningTree;
 
 
 public class UnionFindDataStructure {
-    static int n = 7;
+    static int n = 8;
     static int parent[] = new int[n];
     static int rank[] = new int[n];
 
@@ -66,5 +68,7 @@ public class UnionFindDataStructure {
         System.out.println(find(4));
 
         union(1, 5);
+        System.out.println(Arrays.toString(parent));
+        System.out.println(Arrays.toString(rank));
     }
 }
