@@ -56,4 +56,4 @@ class Student {
 }
 
 // Destructors are not present in java instead java uses garbage collector
-// which unallocated space for objects that are not references or not used
+// which unallocates space for objects that are not referenced or not used
