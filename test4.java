@@ -11,7 +11,7 @@ public class test4 {
 // method in vehicle class we get compile time error
 
 // So we cast the reference to car type to tell that we want to call the print1 of car class 
-// remember case only when ur sure that method exists in that class 
+// remember cast only when ur sure that method exists in that class 
 
 
 class Vehicle {
